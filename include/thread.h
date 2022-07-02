@@ -208,11 +208,10 @@ class Thread {
 
     Thread(Thread &&other) noexcept : t_(other.t_) { other.t_ = 0U; }
 
-    template <class Fp, class... Args,
-              class = typename std::enable_if<!std::is_same<
-                  typename std::remove_cv<
-                      typename std::remove_reference<Fp>::type>::type,
-                  Thread>::value>::type>
+    template <
+        class Fp, class... Args,
+        class = std::enable_if_t<!std::is_same<
+            std::remove_cv_t<std::remove_reference_t<Fp>>, Thread>::value>>
     explicit Thread(Fp &&f, Args &&...args) {
         using Gp = std::tuple<std::decay_t<Fp>, std::decay_t<Args>...>;
         std::unique_ptr<Gp> p(
