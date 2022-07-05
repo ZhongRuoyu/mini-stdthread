@@ -9,7 +9,7 @@ EXAMPLE_OBJS = $(EXAMPLE_SRCS:examples/%.cc=out/examples/%.o)
 EXAMPLE_BINS = $(EXAMPLE_SRCS:examples/%.cc=bin/examples/%)
 
 
-all:
+all: examples
 
 examples: $(EXAMPLE_BINS)
 
