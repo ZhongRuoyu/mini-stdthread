@@ -87,6 +87,7 @@ class Thread {
 
        private:
         friend class Thread;
+        friend struct std::hash<id>;
 
         id(native_handle_type id) : id_(id) {}
 
@@ -175,6 +176,14 @@ class Thread {
 }  // namespace minithread
 
 namespace std {
+
+template <>
+struct hash<minithread::Thread::id>
+    : public std::unary_function<minithread::Thread::id, size_t> {
+    size_t operator()(minithread::Thread::id v) const noexcept {
+        return hash<minithread::Thread::native_handle_type>()(v.id_);
+    }
+};
 
 inline void swap(minithread::Thread &x, minithread::Thread &y) noexcept {
     x.swap(y);
