@@ -174,4 +174,12 @@ class Thread {
 
 }  // namespace minithread
 
+namespace std {
+
+inline void swap(minithread::Thread &x, minithread::Thread &y) noexcept {
+    x.swap(y);
+}
+
+}  // namespace std
+
 #endif  // THREAD_H_
