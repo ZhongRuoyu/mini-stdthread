@@ -1,12 +1,11 @@
 CXXFLAGS += -std=c++17 -Iinclude
 LDFLAGS += -pthread
 
+EXAMPLE_SRCS = $(shell find examples -name *.cc | sort)
+EXAMPLE_OBJS = $(EXAMPLE_SRCS:%.cc=out/%.o)
+EXAMPLE_BINS = $(EXAMPLE_SRCS:%.cc=bin/%)
 EXAMPLE_CXXFLAGS += -fsanitize=address
 EXAMPLE_LDFLAGS += -fsanitize=address
-
-EXAMPLE_SRCS = $(wildcard examples/*.cc)
-EXAMPLE_OBJS = $(EXAMPLE_SRCS:examples/%.cc=out/examples/%.o)
-EXAMPLE_BINS = $(EXAMPLE_SRCS:examples/%.cc=bin/examples/%)
 
 
 all: examples
