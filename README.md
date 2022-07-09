@@ -10,7 +10,8 @@ be imported to other projects with no extra effort required.
 As a lightweight version of
 [stdthread](https://github.com/ZhongRuoyu/stdthread), its implementation is
 also based on LLVM's
-[libc++](https://github.com/llvm/llvm-project/tree/main/libcxx)
-([license](https://github.com/llvm/llvm-project/blob/main/libcxx/LICENSE.TXT)).
+[libc++](https://github.com/llvm/llvm-project/tree/main/libcxx), licensed
+under
+[the Apache License v2.0 with LLVM Exceptions](https://github.com/llvm/llvm-project/blob/main/libcxx/LICENSE.TXT).
 However, its implementation details are self-contained, and can be built with
 any implementation of C++ standard library.
